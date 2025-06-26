@@ -4,9 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun run src/index.ts",
-    "dev": "bun --watch src/index.ts",
-    "build": "bun build src/index.ts --outdir ./dist",
+    "start": "bun run src/app.ts",
+    "dev": "bun --watch src/app.ts",
+    "build": "bun build src/app.ts --outdir ./dist",
     "ingest": "bun run src/scripts/ingest-data.ts"
   },
   "devDependencies": {
