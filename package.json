@@ -6,7 +6,8 @@
   "scripts": {
     "start": "bun run src/index.ts",
     "dev": "bun --watch src/index.ts",
-    "build": "bun build src/index.ts --outdir ./dist"
+    "build": "bun build src/index.ts --outdir ./dist",
+    "ingest": "bun run src/scripts/ingest-data.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
@@ -25,6 +26,12 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "@langchain/community": "^0.3.47",
+    "@langchain/core": "^0.3.61",
+    "@langchain/mongodb": "^0.1.0",
+    "@langchain/openai": "^0.5.15",
+    "express": "^5.1.0",
+    "mongodb": "^6.17.0",
+    "pdf-parse": "^1.1.1"
   }
 }
