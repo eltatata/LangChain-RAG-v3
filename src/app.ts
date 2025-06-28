@@ -1,12 +1,15 @@
-import express from 'express';
+import { envs } from './config';
+import { AppRoutes, Server } from './server';
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+(() => {
+  main();
+})();
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+async function main() {
+  const server = new Server({
+    port: envs.PORT,
+    routes: AppRoutes.routes,
+  });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+  server.start();
+}

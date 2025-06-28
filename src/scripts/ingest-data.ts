@@ -1,17 +1,17 @@
-import 'dotenv/config';
 import { MongoDBAtlasVectorSearch } from '@langchain/mongodb';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { MongoClient } from 'mongodb';
 import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf';
 import { CharacterTextSplitter } from '@langchain/textsplitters';
+import { envs } from '../config';
 
 const embeddings = new OpenAIEmbeddings();
 
 (async () => {
-  const client = new MongoClient(process.env.MONGODB_ATLAS_URI || '');
+  const client = new MongoClient(envs.MONGODB_ATLAS_URI || '');
   const collection = client
-    .db(process.env.DATABASE_NAME)
-    .collection(process.env.COLLECTION_NAME || 'data');
+    .db(envs.DATABASE_NAME)
+    .collection(envs.COLLECTION_NAME || 'data');
 
   const loader = new PDFLoader('./src/docs/estruc-datos.pdf');
   const doc = await loader.load();
