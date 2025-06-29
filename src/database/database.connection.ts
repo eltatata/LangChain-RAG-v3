@@ -8,11 +8,12 @@ const collection = client
   .db(envs.DATABASE_NAME)
   .collection(envs.COLLECTION_NAME || 'data');
 
-const vectorStore = new MongoDBAtlasVectorSearch(new OpenAIEmbeddings(), {
-  collection,
-  indexName: 'vector_index',
-  textKey: 'text',
-  embeddingKey: 'embedding',
-});
-
-export default vectorStore;
+export const vectorStore = new MongoDBAtlasVectorSearch(
+  new OpenAIEmbeddings(),
+  {
+    collection,
+    indexName: 'vector_index',
+    textKey: 'text',
+    embeddingKey: 'embedding',
+  },
+);
