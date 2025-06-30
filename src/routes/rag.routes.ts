@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { RagController } from '../controllers';
 import { RagService } from '../services';
+import { validateSessionId } from '../middlewares';
 
 export class RagRoutes {
   static get routes(): Router {
@@ -9,7 +10,7 @@ export class RagRoutes {
     const ragService = new RagService();
     const ragController = new RagController(ragService);
 
-    router.post('/', ragController.rag);
+    router.post('/', validateSessionId, ragController.rag);
 
     return router;
   }
