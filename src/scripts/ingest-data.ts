@@ -13,7 +13,7 @@ const embeddings = new OpenAIEmbeddings();
     .db(envs.DATABASE_NAME)
     .collection(envs.COLLECTION_NAME || 'data');
 
-  const loader = new PDFLoader('./src/docs/estruc-datos.pdf');
+  const loader = new PDFLoader('./src/docs/doc.pdf');
   const doc = await loader.load();
 
   let text = '';
