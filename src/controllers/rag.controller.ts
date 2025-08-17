@@ -14,7 +14,7 @@ export class RagController {
 
     this.ragService
       .RagResponse(req.body.message, req.sessionId!)
-      .then((response) => res.status(201).json(response))
+      .then((response) => res.status(200).json(response))
       .catch((error) => ErrorHandler.handleError(error, res));
   };
 }
