@@ -23,8 +23,8 @@ export class RagService {
 
   constructor() {
     this.llm = new ChatOpenAI({
-      model: 'gpt-4o-mini',
-      temperature: 0,
+      model: 'gpt-4o',
+      temperature: 0.2,
     });
     this.graph = this.createGraph();
   }
