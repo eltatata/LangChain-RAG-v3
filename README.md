@@ -4,6 +4,8 @@ This project implements a Conversational RAG (Retrieval-Augmented Generation) us
 
 The service is built with Bun, TypeScript, Express (MVC), and MongoDB (Vector Store).
 
+The RAG was designed around a fictional technology store called **Voltix Electronics**, enabling domain-specific conversations about products, services, and general store-related queries.
+
 ## 🚀 Main Technologies
 
 - **Bun** – Modern and fast JavaScript runtime.
@@ -27,6 +29,15 @@ The service is built with Bun, TypeScript, Express (MVC), and MongoDB (Vector St
   - LangGraph integration.
   - Prompt template definitions.
   - Conversation memory management.
+
+## 🛒 RAG for Voltix Electronics
+
+The RAG is designed to decide dynamically whether a user’s query requires a database (vector store) lookup or not:
+
+- If the question is store-specific (e.g., “What laptops are available?” or “Tell me about Voltix Electronics’ warranty”), the model retrieves information from the MongoDB vector store.
+- If the question is general (e.g., “What is AI?” or “Explain what a GPU does”), the model can respond without consulting the database.
+
+This decision-making ensures the RAG provides accurate and context-aware answers while avoiding unnecessary database queries.
 
 ## 📂 Project Structure
 ```
@@ -79,7 +90,14 @@ The service is built with Bun, TypeScript, Express (MVC), and MongoDB (Vector St
     - Middleware validates the thread and passes it to the services layer.
 3. Processing with LangChain + LangGraph
     - Executes RAG logic (retrieval + generation).
+    - Dynamically decides whether to query the vector store.
     - Keeps thread-specific memory to handle independent conversations.
+
+## 📂 Exaplamples
+
+At the root folder of the project, you can find:
+- An example of standard RAG (retrieval + generation).
+- An example of Conversational RAG, including memory and independent threads.
 
 ## 🎥 Demo
 
