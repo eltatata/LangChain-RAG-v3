@@ -54,8 +54,15 @@ export class RagService {
   private createGraph() {
     const queryOrRespond = async (state: typeof MessagesAnnotation.State) => {
       const llmWithTools = this.llm.bindTools([this.retrieveTool()]);
-      const response = await llmWithTools.invoke(state.messages);
-
+      const systemPrompt = `You are the virtual assistant for Voltix Electronics.
+                            Always introduce yourself as the Voltix Electronics assistant at the start of a conversation.
+                            Your role is to answer questions about the company, including: overview, catalog, products, suppliers, warranties, policies, customer service, schedules, and contact information.
+                            Always use the retrieval tool to get relevant information from the knowledge base, except when the user only sends greetings or generic phrases like “hello”, “how are you”, or “I have a question”.
+                            If the question is unrelated to Voltix Electronics, politely respond that you are not logged in and cannot answer.`;
+      const response = await llmWithTools.invoke([
+        new SystemMessage(systemPrompt),
+        ...state.messages,
+      ]);
       return { messages: [response] };
     };
 
