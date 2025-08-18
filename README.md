@@ -99,8 +99,6 @@ At the root folder of the project, you can find:
 - An example of standard RAG (retrieval + generation).
 - An example of Conversational RAG, including memory and independent threads.
 
-## 🎥 Demo
-
 ## 🛠️ Installation & Usage
 1. Clone repository
 ```
