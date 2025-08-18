@@ -91,6 +91,8 @@ export class RagService {
         '\n\n' +
         `${docsContent}`;
 
+      console.log('se consulto a la base de datos', docsContent);
+
       const conversationMessages = state.messages.filter(
         (message) =>
           message instanceof HumanMessage ||
@@ -131,7 +133,7 @@ export class RagService {
     const retrieveSchema = z.object({ query: z.string() });
     const retrieve = tool(
       async ({ query }) => {
-        const retrievedDocs = await vectorStore.similaritySearch(query, 2);
+        const retrievedDocs = await vectorStore.similaritySearch(query);
         const serialized = retrievedDocs
           .map(
             (doc: DocumentInterface<Record<string, unknown>>) =>
