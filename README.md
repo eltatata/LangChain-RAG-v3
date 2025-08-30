@@ -55,7 +55,7 @@ This decision-making ensures the RAG provides accurate and context-aware answers
     └── 📁database
         ├── database.connection.ts
     └── 📁docs
-        ├── estruc-datos.pdf
+        ├── doc.pdf
     └── 📁interfaces
         └── 📁shared
             ├── shared.interfaces.ts
