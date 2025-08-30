@@ -91,8 +91,6 @@ export class RagService {
         '\n\n' +
         `${docsContent}`;
 
-      console.log('se consulto a la base de datos', docsContent);
-
       const conversationMessages = state.messages.filter(
         (message) =>
           message instanceof HumanMessage ||
